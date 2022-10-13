@@ -20,7 +20,8 @@ pipeline {
         }
         stage("download frontend") {
             steps {
-                git branch: 'main', url: 'https://github.com/michalpartyka/Frontend.git'
+	    	checkout scm	    
+                //git branch: 'main', url: 'https://github.com/michalpartyka/Frontend.git'
             }
         }
         stage("display files") {
@@ -44,7 +45,7 @@ pipeline {
             steps{
                 script {
                   // Prepare basic image for application
-                    dockerTag = "RC-${env.BUILD_ID}.${env.GIT_COMMIT}"
+                   dockerTag = "RC-${env.BUILD_ID}.${env.GIT_COMMIT}"
                   applicationImage = docker.build("$imageName:$dockerTag",".")
                 }
 
