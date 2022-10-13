@@ -31,6 +31,7 @@ pipeline {
         }
         stage('Sonarqube analysis') {
             steps {
+		    echo "SonarQube"
                 /*withSonarQubeEnv('SonarQube') {
                     sh "${scannerHome}/bin/sonar-scanner"
                 }
